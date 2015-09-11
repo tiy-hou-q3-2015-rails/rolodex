@@ -1,0 +1,19 @@
+<p>
+  <%= link_to 'Home', '/' %>
+</p>
+
+<h1><%= @contact.full_name %></h1>
+
+<ul>
+  <li>First Name: <%= @contact.first_name %></li>
+  <li>Last Name: <%= @contact.last_name %></li>
+  <li>Email: <%= mail_to @contact.email %></li>
+  <li>Company Name: <%= @contact.company_name %></li>
+  <li>Phone: <%= link_to @contact.phone1, "tel:#{@contact.phone1}" %></li>
+</ul>
+
+<div>
+  <%= link_to 'Next', "/contacts/#{@contact.id + 1}" %>
+</div>
+
+<%= image_tag @contact.image_name %>

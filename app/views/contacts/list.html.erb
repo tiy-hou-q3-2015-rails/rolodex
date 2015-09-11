@@ -1,0 +1,43 @@
+<h1>Here are your contacts</h1>
+
+<form>
+  <input name="qs" id="qs" placeholder="Search" value="<%= params[:qs] %>"></input>
+</form>
+
+
+
+<% if @contacts.blank? %>
+
+<em>No contacts. Boo</em>
+
+<% else %>
+
+<em><%= pluralize @contacts.count, 'contact' %> found in system.</em>
+
+<table>
+  <thead>
+    <tr>
+      <th>LastName</th>
+      <th>FirstName</th>
+      <th>Email</th>
+      <th>Company</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @contacts.each do |contact| %>
+      <tr>
+        <td><%= contact.last_name %></td>
+        <td><%= contact.first_name %></td>
+        <td><%= contact.email %></td>
+        <td><%= contact.company_name %></td>
+        <td>
+          <%= link_to "View Details", "/contacts/#{contact.id}" %>
+        </td>
+      </tr>
+    <% end %>
+
+  </tbody>
+</table>
+
+<% end %>
